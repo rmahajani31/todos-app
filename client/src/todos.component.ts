@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
     selector: 'my-todos',
@@ -15,6 +15,7 @@ export class TodosComponent {
         this.baseUrl = "https://sleepy-fjord-38244.herokuapp.com/";
         this.http.get(`${this.baseUrl}todos`).toPromise()
         .then((todos) => {
+            console.log(todos);
             this.todos = todos;
         })
         .catch((error) => {
