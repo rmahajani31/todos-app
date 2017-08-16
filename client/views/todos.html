@@ -1,1 +1,6 @@
-<p class="lead" [textContent]="todos"></p>
+<ul class="list-group">
+    <li class="list-group-item list-group-item-info" *ngFor="let todo of todos">
+        <p class="list-group-item-text" [textContent]="todo.text"></p>
+        <button>Delete <span class="glyphicon glyphicon-trash"></span></button>
+    </li>
+</ul>
