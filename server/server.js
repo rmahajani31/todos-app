@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 // Set up routes
 app.use('/', mainRouter.router);
-app.use('/api', apiRouter.router);
+app.use('/todos', apiRouter.router);
 
 const port = process.env.PORT || 3000;
 

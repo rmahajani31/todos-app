@@ -14,7 +14,7 @@ router.get('/', (request, response, next) => {
 });
 
 // POST new todo to the mongo db
-router.post('/todos', (request, response) => {
+router.post('/', (request, response) => {
     const newTodo = new Todo({
         text: request.body.text
     });
@@ -28,7 +28,7 @@ router.post('/todos', (request, response) => {
 });
 
 // GET all todos in the mongo db
-router.get('/todos', (request, response) => {
+router.get('/', (request, response) => {
     Todo.find()
     .then((todos) => {
         response.send({todos});
@@ -39,7 +39,7 @@ router.get('/todos', (request, response) => {
 });
 
 // GET todo by id in mongo db
-router.get('/todos/:id', (request, response) => {
+router.get('/:id', (request, response) => {
     const id = request.params.id;
 
     if(!ObjectID.isValid(id)) {
@@ -59,7 +59,7 @@ router.get('/todos/:id', (request, response) => {
 });
 
 // DELETE todo from the mongo server
-router.delete('/todos/:id', (request, response) => {
+router.delete('/:id', (request, response) => {
     const id = request.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -79,7 +79,7 @@ router.delete('/todos/:id', (request, response) => {
 });
 
 // PATCH todo in mongo db
-router.patch('/todos/:id', (request, response) => {
+router.patch('/:id', (request, response) => {
     const id = request.params.id;
     const body = _.pick(request.body, ['text', 'completed']);
 
