@@ -15,7 +15,7 @@ export class TodosComponent {
         this.baseUrl = "https://sleepy-fjord-38244.herokuapp.com/";
         this.http.get(`${this.baseUrl}todos`).toPromise()
         .then((todos) => {
-            console.log(todos.text);
+            console.log(todos.json);
             this.todos = todos;
         })
         .catch((error) => {
