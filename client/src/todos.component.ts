@@ -13,20 +13,25 @@ export class TodosComponent {
 
     constructor(private http: Http) {
         this.baseUrl = "https://sleepy-fjord-38244.herokuapp.com/";
-        this.http.get(`${this.baseUrl}todos`).toPromise()
-        .then((todos) => {
-            console.log(todos.json().todos);
-            this.todos = todos.json().todos;
+        this.getTodos();
+    }
+
+    deleteTodo(id: String) {
+        this.http.delete(`${this.baseUrl}todos/${id}`).toPromise()
+        .then((todo) => {
+            console.log(todo.json());
+            this.getTodos();
         })
         .catch((err) => {
             console.log("Error", err);
         });
     }
 
-    onDelete(id: String) {
-        this.http.delete(`${this.baseUrl}todos/${id}`).toPromise()
-        .then((todo) => {
-            console.log(todo.json());
+    getTodos() {
+        this.http.get(`${this.baseUrl}todos`).toPromise()
+        .then((todos) => {
+            console.log(todos.json().todos);
+            this.todos = todos.json().todos;
         })
         .catch((err) => {
             console.log("Error", err);

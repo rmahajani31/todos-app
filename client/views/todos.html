@@ -1,5 +1,5 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-info" *ngFor="let todo of todos">
-           <p class="lead text-left" [textContent]="todo.text"></p> <button (click)="onDelete(todo._id)" class="btn btn-danger text-center">Delete <span class="glyphicon glyphicon-trash"></span></button>
+           <p class="lead text-left" [textContent]="todo.text"></p> <button (click)="deleteTodo(todo._id)" class="btn btn-danger text-center">Delete <span class="glyphicon glyphicon-trash"></span></button>
     </li>
 </ul>
