@@ -18,8 +18,18 @@ export class TodosComponent {
             console.log(todos.json().todos);
             this.todos = todos.json().todos;
         })
-        .catch((error) => {
-            console.log("Error", error);
+        .catch((err) => {
+            console.log("Error", err);
+        });
+    }
+
+    onDelete(id: String) {
+        this.http.delete(`${this.baseUrl}todos/${id}`).toPromise()
+        .then((todo) => {
+            console.log(todo.json());
+        })
+        .catch((err) => {
+            console.log("Error", err);
         });
     }
 }
