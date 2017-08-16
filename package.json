@@ -4,7 +4,7 @@
   "description": "Simple task manager",
   "main": "server.js",
   "scripts": {
-    "start": "npm install && cd ./client && npm install && tsc --noStrictGenericChecks && node ../server/server.js",
+    "start": "npm install -g typescript && cd ./client && tsc --noStrictGenericChecks && node ../server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
