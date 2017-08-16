@@ -9,10 +9,6 @@ const router = express.Router();
 
 router.use(bodyParser.json());
 
-router.get('/', (request, response, next) => {
-    response.send('api');
-});
-
 // POST new todo to the mongo db
 router.post('/', (request, response) => {
     const newTodo = new Todo({
