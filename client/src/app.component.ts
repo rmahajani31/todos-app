@@ -3,6 +3,6 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app',
-    template: '../views/app.html'
+    templateUrl: '../views/app.html'
 })
 export class AppComponent { }
