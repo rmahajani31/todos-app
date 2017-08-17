@@ -16,6 +16,6 @@ export class RegisterComponent {
     }
 
     postTodo(todoField: NgModel): void {
-        console.log(todoField);
+        console.log(todoField.viewModel);
     }
 }
