@@ -39,6 +39,14 @@ export class TodosComponent {
     }
 
     postTodo(text: String): void {
-        console.log(text);
+        this.http.post(`${this.baseUrl}todos`, {
+            "text": text
+        }).toPromise()
+        .then((todo) => {
+            console.log(todo);
+        })
+        .catch((err) => {
+            console.log("Error", err);
+        });
     }
 }
