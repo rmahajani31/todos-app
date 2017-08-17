@@ -80,6 +80,7 @@ export class TodosComponent {
             console.log("Error", err);
         });
         this.showEdit = false;
+        this.getTodos();
     }
 
     revealEdit() {
