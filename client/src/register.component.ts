@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { NgForm } from '@angular/forms';
+import { NgModel } from '@angular/forms';
 
 @Component({
     selector: 'register-todo',
@@ -15,7 +15,7 @@ export class RegisterComponent {
         this.baseUrl = "https://sleepy-fjord-38244.herokuapp.com/";
     }
 
-    postTodo(form: NgForm): void {
-        console.log(form);
+    postTodo(todoField: NgModel): void {
+        console.log(todoField);
     }
 }
