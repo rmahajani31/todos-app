@@ -10,9 +10,11 @@ export class TodosComponent {
 
     private baseUrl: String;
     private todos;
+    private showEdit: boolean;
 
     constructor(private http: Http) {
         this.baseUrl = "https://sleepy-fjord-38244.herokuapp.com/";
+        this.showEdit = false;
         this.getTodos();
     }
 
@@ -39,7 +41,7 @@ export class TodosComponent {
     }
 
     postTodo(text: String): void {
-        if(!this.exists(text)) {
+        if(!this.findTodo(text)) {
             this.http.post(`${this.baseUrl}todos`, {
                 text
             }).toPromise()
@@ -53,19 +55,34 @@ export class TodosComponent {
         }
     }
 
-    public exists(text: String): boolean {
-        let output: boolean = false;
+    public findTodo(text: String): any {
+        let output = undefined;
         this.todos.forEach((todo) => {
             console.log("Info", todo.text, text);
             if(todo.text === text) {
                 console.log("Returning true");
-                output = true;
+                output = todo;
             }
         });
         return output;
     }
 
-    patchTodo(id: String) {
+    patchTodo(text: String) {
+        const todo = this.findTodo(text);
+        const id = todo._id;
+        this.http.patch(`${this.baseUrl}todos/${id}`, {
+            text
+        }).toPromise()
+        .then((todo) => {
+            console.log(todo);
+        })
+        .catch((err) => {
+            console.log("Error", err);
+        });
+        this.showEdit = false;
+    }
 
+    revealEdit() {
+        this.showEdit = true;
     }
 }

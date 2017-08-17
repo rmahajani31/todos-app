@@ -1,0 +1,13 @@
+<form (ngSubmit)="onClick(todoField, form)" class="form-inline" novalidate #form="ngForm">
+    <div class="form-group text-left">
+        <div class="col-lg-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-pencil"></span> 
+                </span>
+                <input name="todo" type="text" class="form-control" placeholder="Edit Here" [(ngModel)]="text" #todoField="ngModel" required>
+            </div>
+        </div> 
+    </div>
+    <button [disabled]="form.invalid" class="btn btn-primary" type="submit">Edit</button>
+</form>
