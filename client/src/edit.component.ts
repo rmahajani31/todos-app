@@ -11,6 +11,7 @@ export class EditComponent {
     constructor() {}
 
     public onClick(todoField: NgModel, form: NgForm) {
+        console.log(todoField.viewModel);
         this.patchEmitter.emit(todoField.viewModel);
         form.reset();
     } 
