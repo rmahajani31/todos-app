@@ -48,5 +48,6 @@ export class TodosComponent {
         .catch((err) => {
             console.log("Error", err);
         });
+        this.getTodos();
     }
 }
