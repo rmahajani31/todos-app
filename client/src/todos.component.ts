@@ -39,16 +39,27 @@ export class TodosComponent {
     }
 
     postTodo(text: String): void {
-        this.http.post(`${this.baseUrl}todos`, {
-            text
-        }).toPromise()
-        .then((todo) => {
-            console.log(todo);
-        })
-        .catch((err) => {
-            console.log("Error", err);
+        if(!this.exists(text)) {
+            this.http.post(`${this.baseUrl}todos`, {
+                text
+            }).toPromise()
+            .then((todo) => {
+                console.log(todo);
+            })
+            .catch((err) => {
+                console.log("Error", err);
+            });
+            this.getTodos();
+        }
+    }
+
+    public exists(text: String): boolean {
+        this.todos.forEach((todo) => {
+            if(todo.text === text) {
+                return true;
+            }
         });
-        this.getTodos();
+        return false;
     }
 
     patchTodo(id: String) {

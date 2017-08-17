@@ -12,22 +12,18 @@ router.use(bodyParser.json());
 // POST new todo to the mongo db
 router.post('/', (request, response) => {
     const text = request.body.text;
-    Todo.findOne({text})
-    .then((todo) => {
-        if(!todo) {
-            const newTodo = new Todo({
-                text
-            });
-            newTodo.save()
-            .then((todo) => {
-                response.send(todo);
-            })
-            .catch((error) => {
-                response.status(400).send(error);
-            });
-        }
-    });
-});
+    if(!todo) {
+        const newTodo = new Todo({
+            text
+        });
+        newTodo.save()
+        .then((todo) => {
+            response.send(todo);
+        })
+        .catch((error) => {
+            response.status(400).send(error);
+        });
+};
 
 // GET all todos in the mongo db
 router.get('/', (request, response) => {
