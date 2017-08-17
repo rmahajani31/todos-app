@@ -16,7 +16,7 @@ export class TodosComponent {
         this.getTodos();
     }
 
-    deleteTodo(id: String) {
+    deleteTodo(id: String): void {
         this.http.delete(`${this.baseUrl}todos/${id}`).toPromise()
         .then((todo) => {
             console.log(todo.json());
@@ -27,7 +27,7 @@ export class TodosComponent {
         });
     }
 
-    getTodos() {
+    getTodos(): void {
         this.http.get(`${this.baseUrl}todos`).toPromise()
         .then((todos) => {
             console.log(todos.json().todos);
