@@ -11,15 +11,20 @@ router.use(bodyParser.json());
 
 // POST new todo to the mongo db
 router.post('/', (request, response) => {
-    const newTodo = new Todo({
-        text: request.body.text
-    });
-    newTodo.save()
+    Todo.findOne({text: request.body.text})
     .then((todo) => {
-        response.send(todo);
-    })
-    .catch((error) => {
-        response.status(400).send(error);
+        if(!todo) {
+            const newTodo = new Todo({
+                text: request.body.text
+            });
+            newTodo.save()
+            .then((todo) => {
+                response.send(todo);
+            })
+            .catch((error) => {
+                response.status(400).send(error);
+            }); 
+        }
     });
 });
 
