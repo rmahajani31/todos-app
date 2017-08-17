@@ -12,7 +12,7 @@ export class RegisterComponent {
     constructor() { }
 
     onClick(todoField: NgModel, form: NgForm): void {
-        form.reset();
         this.postEmitter.emit(todoField.viewModel);
+        form.reset();
     }
 }
