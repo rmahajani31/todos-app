@@ -7,7 +7,7 @@ import { NgModel } from '@angular/forms';
 })
 export class RegisterComponent {
 
-    @Output('click') postEmitter = new EventEmitter<String>();
+    @Output('onClick') postEmitter = new EventEmitter<String>();
 
     constructor() { }
 

@@ -1,4 +1,4 @@
-<register-todo (click)="postTodo($event)"></register-todo>
+<register-todo (onClick)="postTodo($event)"></register-todo>
 <ul class="list-group">
     <li class="list-group-item list-group-item-info" *ngFor="let todo of todos">
            <p class="lead text-left" [textContent]="todo.text"></p>
