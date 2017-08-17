@@ -11,12 +11,12 @@ router.use(bodyParser.json());
 
 // POST new todo to the mongo db
 router.post('/', (request, response) => {
-    Todo.findOne({text: request.body.text})
+    const text = request.body.text;
+    Todo.findOne({text})
     .then((todo) => {
         if(!todo) {
-            console.log("Adding new todo");
             const newTodo = new Todo({
-                text: request.body.text
+                text
             });
             newTodo.save()
             .then((todo) => {
@@ -24,12 +24,8 @@ router.post('/', (request, response) => {
             })
             .catch((error) => {
                 response.status(400).send(error);
-            }); 
+            });
         }
-        console.log("todo already exists");
-    })
-    .catch((err) => {
-        console.log("Error", err);
     });
 });
 

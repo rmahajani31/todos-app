@@ -40,7 +40,7 @@ export class TodosComponent {
 
     postTodo(text: String): void {
         this.http.post(`${this.baseUrl}todos`, {
-            "text": text
+            text
         }).toPromise()
         .then((todo) => {
             console.log(todo);
@@ -52,6 +52,6 @@ export class TodosComponent {
     }
 
     patchTodo(id: String) {
-        
+
     }
 }
