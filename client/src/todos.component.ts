@@ -79,8 +79,8 @@ export class TodosComponent {
         .catch((err) => {
             console.log("Error", err);
         });
-        this.showEdit = false;
-        this.getTodos();
+        //this.showEdit = false;
+        //this.getTodos();
     }
 
     revealEdit() {
