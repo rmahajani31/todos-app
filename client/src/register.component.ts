@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 @Component({
@@ -9,13 +7,11 @@ import { NgModel } from '@angular/forms';
 })
 export class RegisterComponent {
 
-    private baseUrl: String;
+    @Output('click') postEmitter = new EventEmitter<String>();
 
-    constructor(private http: Http) {
-        this.baseUrl = "https://sleepy-fjord-38244.herokuapp.com/";
-    }
+    constructor() { }
 
-    postTodo(todoField: NgModel): void {
-        console.log(todoField.viewModel);
+    onClick(todoField: NgModel): void {
+        this.postEmitter.emit(todoField.viewModel);
     }
 }

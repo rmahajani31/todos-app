@@ -37,4 +37,8 @@ export class TodosComponent {
             console.log("Error", err);
         });
     }
+
+    postTodo(text: String): void {
+        console.log(text);
+    }
 }
