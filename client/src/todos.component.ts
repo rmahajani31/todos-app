@@ -54,15 +54,15 @@ export class TodosComponent {
     }
 
     public exists(text: String): boolean {
+        let output: boolean = false;
         this.todos.forEach((todo) => {
             console.log("Info", todo.text, text);
             if(todo.text === text) {
                 console.log("Returning true");
-                return true;
+                output = true;
             }
         });
-        console.log("Returning false");
-        return false;
+        return output;
     }
 
     patchTodo(id: String) {
