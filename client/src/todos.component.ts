@@ -70,17 +70,20 @@ export class TodosComponent {
     patchTodo(text: String) {
         const todo = this.findTodo(text);
         const id = todo._id;
-        this.http.patch(`${this.baseUrl}todos/${id}`, {
-            text
-        }).toPromise()
-        .then((todo) => {
-            console.log(todo);
-        })
-        .catch((err) => {
-            console.log("Error", err);
-        });
-        //this.showEdit = false;
-        //this.getTodos();
+        console.log("Id is", id);
+        console.log("Text is", text);
+        console.log("Todo is", todo.text);
+        // this.http.patch(`${this.baseUrl}todos/${id}`, {
+        //     text
+        // }).toPromise()
+        // .then((todo) => {
+        //     console.log(todo);
+        // })
+        // .catch((err) => {
+        //     console.log("Error", err);
+        // });
+        // this.showEdit = false;
+        // this.getTodos();
     }
 
     revealEdit() {
