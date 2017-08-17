@@ -14,6 +14,7 @@ router.post('/', (request, response) => {
     Todo.findOne({text: request.body.text})
     .then((todo) => {
         if(!todo) {
+            console.log("Adding new todo");
             const newTodo = new Todo({
                 text: request.body.text
             });
@@ -25,6 +26,7 @@ router.post('/', (request, response) => {
                 response.status(400).send(error);
             }); 
         }
+        console.log("todo already exists");
     })
     .catch((err) => {
         console.log("Error", err);
