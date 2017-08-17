@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { NgModel, NgForm } from '@angular/forms';
 
 @Component({
     selector: 'register-todo',
@@ -11,7 +11,8 @@ export class RegisterComponent {
 
     constructor() { }
 
-    onClick(todoField: NgModel): void {
+    onClick(todoField: NgModel, form: NgForm): void {
+        form.reset();
         this.postEmitter.emit(todoField.viewModel);
     }
 }
