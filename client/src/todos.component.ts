@@ -11,10 +11,12 @@ export class TodosComponent {
     private baseUrl: String;
     private todos;
     private showEdit: boolean;
+    private editId: String;
 
     constructor(private http: Http) {
         this.baseUrl = "https://sleepy-fjord-38244.herokuapp.com/";
         this.showEdit = false;
+        this.editId = null;
         this.getTodos();
     }
 
@@ -68,25 +70,23 @@ export class TodosComponent {
     }
 
     patchTodo(text: String) {
-        const todo = this.findTodo(text);
-        const id = todo._id;
-        console.log("Id is", id);
+        console.log("Id is", this.editId);
         console.log("Text is", text);
-        console.log("Todo is", todo.text);
-        // this.http.patch(`${this.baseUrl}todos/${id}`, {
-        //     text
-        // }).toPromise()
-        // .then((todo) => {
-        //     console.log(todo);
-        // })
-        // .catch((err) => {
-        //     console.log("Error", err);
-        // });
-        // this.showEdit = false;
-        // this.getTodos();
+        this.http.patch(`${this.baseUrl}todos/${this.editId}`, {
+            text
+        }).toPromise()
+        .then((todo) => {
+            console.log(todo);
+        })
+        .catch((err) => {
+            console.log("Error", err);
+        });
+        this.showEdit = false;
+        this.getTodos();
     }
 
-    revealEdit() {
+    revealEdit(id: String) {
+        this.editId = id;
         this.showEdit = true;
     }
 }
