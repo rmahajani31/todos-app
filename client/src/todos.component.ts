@@ -50,4 +50,8 @@ export class TodosComponent {
         });
         this.getTodos();
     }
+
+    patchTodo(id: String) {
+        
+    }
 }

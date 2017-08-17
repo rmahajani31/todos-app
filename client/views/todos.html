@@ -1,6 +1,8 @@
 <register-todo (click)="postTodo($event)"></register-todo>
 <ul class="list-group">
     <li class="list-group-item list-group-item-info" *ngFor="let todo of todos">
-           <p class="lead text-left" [textContent]="todo.text"></p> <button (click)="deleteTodo(todo._id)" class="btn btn-danger text-center">Delete <span class="glyphicon glyphicon-trash"></span></button>
+           <p class="lead text-left" [textContent]="todo.text"></p>
+           <button (click)="deleteTodo(todo._id)" class="btn btn-danger text-center">Delete <span class="glyphicon glyphicon-trash"></span></button>
+           <button (click)="deleteTodo(todo._id)" class="btn btn-info text-center">Delete <span class="glyphicon glyphicon-pencil"></span></button>
     </li>
 </ul>
