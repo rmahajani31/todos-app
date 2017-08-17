@@ -5,7 +5,7 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span> 
                 </span>
-                <input [(ngModel)]="text" #todoField="ngModel" name="todo" type="text" class="form-control" placeholder="Specify Todo Here" required>
+                <input name="todo" type="text" class="form-control" placeholder="Specify Todo Here" [(ngModel)]="text" #todoField="ngModel" required>
             </div>
         </div> 
     </div>
